@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            app:srcCompat="@drawable/ute" />
+            app:srcCompat="@drawable/logo_color" />
 
         <EditText
             android:id="@+id/editTextText"
