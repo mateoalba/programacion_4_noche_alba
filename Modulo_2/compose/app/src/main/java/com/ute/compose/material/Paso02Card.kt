@@ -1,6 +1,5 @@
 package com.ute.compose.material
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -14,14 +13,15 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ute.compose.model.Contacto
 import com.ute.compose.model.contactosDeMuestra
 
 // ── Composable reutilizable — se usará desde el Paso 3 en adelante ───────────
 @Composable
 fun TarjetaContacto(
-    contacto: Int,
-    onClick: () -> Unit = {},
-    onLlamar: () -> Unit = {},
+    contacto:  Contacto,
+    onClick:   () -> Unit = {},
+    onLlamar:  () -> Unit = {},
     onFavorito: () -> Unit = {}
 ) {
     // ElevatedCard con onClick → toda la tarjeta es presionable
@@ -116,11 +116,11 @@ fun Paso02CardScreen() {
             color = MaterialTheme.colorScheme.primary)
 
         // Mostramos los primeros 3 contactos de la lista de muestra
-        contactosDeMuestra.take(3).forEach { contacto ->
+        contactosDeMuestra.forEach { contacto ->
             TarjetaContacto(
-                contacto = contacto,
-                onClick = { /* En el Paso 6: navegar al detalle */ },
-                onLlamar = { /* En el Paso 6: mostrar snackbar */ },
+                contacto  = contacto,
+                onClick   = { /* En el Paso 6: navegar al detalle */ },
+                onLlamar  = { /* En el Paso 6: mostrar snackbar */ },
                 onFavorito = { /* En el Paso 3: toggle en la lista */ }
             )
         }
@@ -152,6 +152,6 @@ fun Paso02CardScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun Paso02Preview() {
+fun Paso02_Preview() {
     MaterialTheme { Paso02CardScreen() }
 }
