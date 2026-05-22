@@ -1,22 +1,40 @@
-// Función sin parámetros y sin retorno
-void saludar() {
-  print('Hola mundo');
-}
-
-// Función con parámetros y sin retorno
-void saludoConParametro(String nombre) {
-  print('Hola $nombre');
-}
-
-// Función sin parámetros y con retorno
-int obtenerNumero() {
-  return 10;
-}
+import 'dart:io';
 
 void main() {
-  saludar();
-  saludoConParametro('Pedro Perez');
+  int minutos = 1;
+  int totalMinutos = 0;
+  int clientes = 0;
 
-  int numero = obtenerNumero();
-  print(numero);
+  while (minutos > 0) {
+    print("Ingrese los minutos de entrenamiento (0 para finalizar):");
+
+    minutos = int.parse(stdin.readLineSync()!);
+
+    if (minutos > 0) {
+      clientes++;
+      totalMinutos += minutos;
+
+    
+      if (minutos < 30) {
+        print("Entrenamiento insuficiente");
+      } 
+      else if (minutos <= 90) {
+        print("Entrenamiento adecuado");
+      } 
+      else {
+        print("Entrenamiento intenso");
+      }
+    }
+  }
+
+  double promedio = 0;
+
+  if (clientes > 0) {
+    promedio = totalMinutos / clientes;
+  }
+
+  print("\n===== RESULTADOS =====");
+  print("Total de minutos entrenados: $totalMinutos");
+  print("Cantidad de clientes registrados: $clientes");
+  print("Promedio de minutos por cliente: $promedio");
 }
