@@ -1,0 +1,49 @@
+// Declaracion Variables 
+fun main(){
+    //Val Inmutable
+    val nombre= "Ana"
+    val edad: Init = 28
+    //Var mutable
+    var contador = 0
+    contador = contador + 1
+
+    println("$nombre tiene $edad años")
+
+    //Tipos de datos
+    //Numeros Enteros
+    val numero1: Byte = 127
+    val numero2: Short = 32_767
+    val numero3: Int = 12
+    val numero4: Long = 2_222_222_333_222_233
+    
+    print(numero1)
+    print(numero2)
+    print(numero3)
+    print(numero4)
+    
+    //Numeros Decimales
+    val numero5: Float = 3.14f
+    val numero6: Double = 3.14159265
+    
+    val booleano: Boolean = true
+    //Caracteres
+    val caracter: Char = 'k'
+    val cadena: String = 'Kotlin'
+    val inferido = "string"
+    
+    printIn("Tipo de inferido: ${inferido::class.simpleName}")
+    val inferido1=12
+    printIn("Tipo de inferido: ${inferido1::class.simpleName}")
+    
+    //Utilidades de String
+    //Expresiones
+    val primerNombre = "Mateo"
+    val primerApellido = "Alba"
+    
+    val primerNombreMayuscula=primerNombre.uppercase()
+    val primerApellidoMayuscula=primerApellido.uppercase()
+    
+    printIn("Nombre Completo: ${primerNombreMayuscula} ${primerApellidoMayuscula}")
+    printIn("Nombre Completo: ${primerNombre.uppercase()} ${primerApellido.uppercase()}")
+
+}
