@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 
+
 @Composable
 fun AvatarSection(
     avatarUrl: String?,
