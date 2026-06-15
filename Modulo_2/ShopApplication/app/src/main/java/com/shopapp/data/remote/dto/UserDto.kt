@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.shopapp.domain.model.User
 import com.shopapp.domain.model.UserPayload
 
+
 data class UserDto(
     val id:         Int,
     val username:   String,
@@ -45,6 +46,25 @@ data class UserStatsDto(
 data class AvatarUploadResponseDto(
     @SerializedName("avatar_url") val avatarUrl: String?,
 )
+
+
+
+/** Cuerpo del POST /api/emails/send/ */
+data class SendNotificationDto(
+    @SerializedName("subject") val subject: String,
+    @SerializedName("message") val message: String,
+    @SerializedName("user_id") val userId:  Int? = null,  // null → envío masivo
+)
+
+/**
+ * Respuesta { "detail": "Correo enviado a N usuario(s).", "sent": N, "failed": M }
+ */
+data class NotificationResultDto(
+    @SerializedName("detail") val detail: String,
+    @SerializedName("sent")   val sent:   Int,
+    @SerializedName("failed") val failed: Int,
+)
+
 // ── Mappers ───────────────────────────────────────────────────
 
 fun UserDto.toDomain() = User(
@@ -70,3 +90,4 @@ fun UserPayload.toRequest() = UserRequestDto(
     isActive  = isActive,
     password  = password,
 )
+
