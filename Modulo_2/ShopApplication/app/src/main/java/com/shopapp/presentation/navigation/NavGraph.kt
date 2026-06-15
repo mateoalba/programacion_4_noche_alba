@@ -34,6 +34,7 @@ import com.shopapp.presentation.viewmodel.CartViewModel
 import com.shopapp.presentation.viewmodel.OrdersAdminViewModel
 import com.shopapp.theme.Surface
 import com.shopapp.theme.TextSecondary
+import com.shopapp.presentation.ui.admin.users.SendNotificationScreen
 
 @Composable
 fun NavGraph(
@@ -151,6 +152,20 @@ fun NavGraph(
                             popUpTo(Screen.Login.route) { inclusive = true }
                         }
                     },
+                )
+            }
+
+
+            // ── Notificaciones de staff ───────────────────────────────────────────────────
+            composable(Screen.SendNotification.route) {
+                if (!isStaff) {
+                    LaunchedEffect(Unit) {
+                        navController.popBackStack()
+                    }
+                    return@composable
+                }
+                SendNotificationScreen(
+                    onBack = { navController.popBackStack() },
                 )
             }
 
