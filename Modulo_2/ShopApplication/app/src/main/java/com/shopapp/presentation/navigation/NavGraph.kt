@@ -155,8 +155,7 @@ fun NavGraph(
                 )
             }
 
-
-            // ── Notificaciones de staff ───────────────────────────────────────────────────
+            // ── Notificaciones de staff ─────────────────────────────────
             composable(Screen.SendNotification.route) {
                 if (!isStaff) {
                     LaunchedEffect(Unit) {
@@ -240,6 +239,7 @@ fun NavGraph(
                                 popUpTo(0) { inclusive = true }
                             }
                         },
+                        onSendNotification = { navController.navigate(Screen.SendNotification.route) },
                     )
                 }
             }
