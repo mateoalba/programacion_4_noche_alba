@@ -2,10 +2,13 @@
 package com.shopapp.data.remote.api
 
 import com.shopapp.data.remote.dto.*
+import com.shopapp.data.remote.dto.NotificationResultDto
+import com.shopapp.data.remote.dto.SendNotificationDto
 import retrofit2.Response
 import retrofit2.http.*
 import okhttp3.MultipartBody
-
+import retrofit2.http.Body
+import retrofit2.http.POST
 
 interface UserApi {
     @GET("users/")
@@ -45,4 +48,9 @@ interface UserApi {
     suspend fun uploadAvatar(
         @Part avatar: MultipartBody.Part,
     ): Response<AvatarUploadResponseDto>
+
+    @POST("emails/send/")
+    suspend fun sendNotification(
+        @Body body: SendNotificationDto,
+    ): Response<NotificationResultDto>
 }
