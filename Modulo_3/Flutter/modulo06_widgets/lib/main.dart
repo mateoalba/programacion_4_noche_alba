@@ -18,7 +18,7 @@ import 'screens/pantalla_contexto.dart';
 // │  7  Paso 5   BuildContext                                        │
 // │  8  Paso 6   Composición de widgets                             │
 // └──────────────────────────────────────────────────────────────────┘
-const int paso = 2; // Cambia este número para navegar entre pasos
+const int paso = 5; // Cambia este número para navegar entre pasos
 
 void main() => runApp(MaterialApp(
   debugShowCheckedModeBanner: false,
