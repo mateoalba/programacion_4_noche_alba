@@ -28,9 +28,9 @@ class _PlaceholderScreen extends ConsumerWidget {
           IconButton(
             tooltip: 'Cerrar sesión',
             icon: const Icon(Icons.logout),
-            onPressed: () {
-              ref.read(authProvider.notifier).logout();
-              context.go('/login');
+            onPressed: () async {
+              await ref.read(authProvider.notifier).logout();
+              if (context.mounted) context.go('/login');
             },
           ),
         ],
@@ -71,39 +71,43 @@ final routerProvider = Provider<GoRouter>((ref) {
     routes: [
       GoRoute(
         path:    '/splash',
-        builder: (_, _) => const _SplashScreen(),
+        builder: (_, __) => const _SplashScreen(),
       ),
+
       GoRoute(
         path:    '/login',
-        builder: (_, _) => const LoginScreen(),
+        builder: (_, __) => const LoginScreen(),
       ),
       GoRoute(
         path:    '/register',
-        builder: (_, _) => const RegisterScreen(),
+        builder: (_, __) => const RegisterScreen(),
       ),
+
       GoRoute(
         path:    '/',
-        builder: (_, _) => const _PlaceholderScreen('Home — M5'),
+        builder: (_, __) => const _PlaceholderScreen('Home — M5'),
       ),
       GoRoute(
         path:    '/catalog',
-        builder: (_, _) => const _PlaceholderScreen('Catálogo — M5'),
+        builder: (_, __) => const _PlaceholderScreen('Catálogo — M5'),
       ),
       GoRoute(
         path:    '/product/:id',
-        builder: (_, _) => const _PlaceholderScreen('Detalle — M5'),
+        builder: (_, __) => const _PlaceholderScreen('Detalle — M5'),
       ),
+
       GoRoute(
         path:    '/orders',
-        builder: (_, _) => const _PlaceholderScreen('Mis pedidos — M7'),
+        builder: (_, __) => const _PlaceholderScreen('Mis pedidos — M7'),
       ),
       GoRoute(
         path:    '/profile',
-        builder: (_, _) => const _PlaceholderScreen('Perfil — M7'),
+        builder: (_, __) => const _PlaceholderScreen('Perfil — M7'),
       ),
+
       GoRoute(
         path:    '/admin',
-        builder: (_, _) => const _PlaceholderScreen('Dashboard — M8'),
+        builder: (_, __) => const _PlaceholderScreen('Dashboard — M8'),
       ),
     ],
   );
@@ -111,6 +115,6 @@ final routerProvider = Provider<GoRouter>((ref) {
 
 class _AuthStateListenable extends ChangeNotifier {
   _AuthStateListenable(Ref ref) {
-    ref.listen<AuthState>(authProvider, (_, _) => notifyListeners());
+    ref.listen<AuthState>(authProvider, (_, __) => notifyListeners());
   }
 }

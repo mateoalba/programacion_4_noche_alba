@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/error/api_exception.dart';
-import '../../../domain/model/auth_models.dart';
-import '../../local/secure_storage.dart';
 import 'dio_client.dart';
+import '../../local/secure_storage.dart';
+import '../../../domain/model/auth_models.dart';
 
 abstract class AuthRemoteDatasource {
   Future<LoggedUser> login(String username, String password);

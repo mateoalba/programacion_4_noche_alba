@@ -86,9 +86,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                           width:   double.infinity,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color:        AppColors.error.withAlpha(25),
+                            color:        AppColors.error.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(10),
-                            border:       Border.all(color: AppColors.error.withAlpha(76)),
+                            border:       Border.all(color: AppColors.error.withValues(alpha: 0.3)),
                           ),
                           child: Text(
                             error,
@@ -110,7 +110,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
                       AuthTextField(
                         label:           'Contraseña',
-                        hint:            '•' * 8,
+                        hint:            '••••••••',
                         controller:      _passCtrl,
                         isPassword:      true,
                         enabled:         !isLoading,

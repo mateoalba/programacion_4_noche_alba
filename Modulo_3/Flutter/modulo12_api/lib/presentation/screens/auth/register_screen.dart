@@ -85,7 +85,7 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                           width:   double.infinity,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
-                            color:        AppColors.error.withAlpha(25),
+                            color:        AppColors.error.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Text(
@@ -107,13 +107,13 @@ class _RegisterScreenState extends ConsumerState<RegisterScreen> {
                       const SizedBox(height: 14),
 
                       AuthTextField(
-                        label:       'Email',
-                        hint:        'tu@email.com',
-                        controller:  _emailCtrl,
-                        enabled:     !isLoading,
+                        label:        'Email',
+                        hint:         'tu@email.com',
+                        controller:   _emailCtrl,
+                        enabled:      !isLoading,
                         keyboardType: TextInputType.emailAddress,
-                        validator:   _submitted ? validateEmail : null,
-                        onChanged:   (_) => ref.read(authProvider.notifier).clearError(),
+                        validator:    _submitted ? validateEmail : null,
+                        onChanged:    (_) => ref.read(authProvider.notifier).clearError(),
                       ),
                       const SizedBox(height: 14),
 

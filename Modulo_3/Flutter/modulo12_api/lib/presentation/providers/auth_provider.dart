@@ -5,15 +5,13 @@ import '../../data/remote/api/auth_remote_datasource.dart';
 import '../../domain/model/auth_models.dart';
 import '../../domain/model/auth_state.dart';
 
-class AuthNotifier extends Notifier<AuthState> {
-  @override
-  AuthState build() {
-    _restoreSession();
-    return const AuthState.checking();
-  }
+class AuthNotifier extends StateNotifier<AuthState> {
+  final AuthRemoteDatasource _datasource;
+  final SecureStorage        _storage;
 
-  AuthRemoteDatasource get _datasource => ref.read(authDatasourceProvider);
-  SecureStorage get _storage => ref.read(secureStorageProvider);
+  AuthNotifier(this._datasource, this._storage) : super(const AuthState.checking()) {
+    _restoreSession();
+  }
 
   Future<void> _restoreSession() async {
     try {
@@ -82,4 +80,9 @@ class AuthNotifier extends Notifier<AuthState> {
   }
 }
 
-final authProvider = NotifierProvider<AuthNotifier, AuthState>(AuthNotifier.new);
+final authProvider = StateNotifierProvider<AuthNotifier, AuthState>((ref) {
+  return AuthNotifier(
+    ref.watch(authDatasourceProvider),
+    ref.watch(secureStorageProvider),
+  );
+});
