@@ -21,7 +21,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     Future.microtask(() {
       final notifier = ref.read(catalogProvider.notifier);
       if (ref.read(catalogProvider).products.isEmpty) {
-        notifier.loadProducts();
+        notifier.load();
       }
     });
   }
@@ -104,7 +104,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     Text(catalogState.error!, style: tt.bodyMedium),
                     const SizedBox(height: 12),
                     OutlinedButton(
-                      onPressed: () => ref.read(catalogProvider.notifier).loadProducts(),
+                      onPressed: () => ref.read(catalogProvider.notifier).load(),
                       child: const Text('Reintentar'),
                     ),
                   ],
@@ -126,7 +126,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     final product = catalogState.products[index];
                     return ProductCard(
                       product: product,
-                      onTap: () => context.push('/product/${product.id}'),
+                      onTap: () => context.push('/catalog/${product.id}'),
                     );
                   },
                   childCount: catalogState.products.length,

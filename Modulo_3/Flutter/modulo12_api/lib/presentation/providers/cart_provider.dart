@@ -1,16 +1,22 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../core/config/app_config.dart';
 import '../../domain/model/product.dart';
 
 class CartItem {
   final Product product;
   final int quantity;
   const CartItem({required this.product, required this.quantity});
+
+  double get subtotal => product.price * quantity;
 }
 
 class CartState {
   final List<CartItem> items;
   const CartState({this.items = const []});
+
   int get itemCount => items.fold(0, (sum, item) => sum + item.quantity);
+  double get total => items.fold(0.0, (sum, item) => sum + item.subtotal);
+  double get totalWithTax => total * (1 + AppConfig.taxRate);
 }
 
 class CartNotifier extends StateNotifier<CartState> {
@@ -43,6 +49,7 @@ class CartNotifier extends StateNotifier<CartState> {
   }
 
   void clear() => state = const CartState();
+  void clearCart() => clear();
 }
 
 final cartProvider = StateNotifierProvider<CartNotifier, CartState>((_) => CartNotifier());

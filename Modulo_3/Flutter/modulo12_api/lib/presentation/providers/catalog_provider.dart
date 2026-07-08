@@ -1,132 +1,169 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../data/remote/api/category_remote_datasource.dart';
 import '../../data/remote/api/product_remote_datasource.dart';
-import '../../data/repository/category_repository_impl.dart';
 import '../../domain/model/category.dart';
 import '../../domain/model/product.dart';
 
 class CatalogState {
   final List<Product> products;
+  final List<Category> categories;
   final bool isLoading;
   final bool isLoadingMore;
   final String? error;
+  final int total;
   final bool hasMore;
-  final int currentPage;
-  final String search;
+  final int page;
+  final String? search;
   final int? categoryId;
-  final String ordering;
+  final double? minPrice;
+  final double? maxPrice;
+  final String? ordering;
 
   const CatalogState({
     this.products = const [],
+    this.categories = const [],
     this.isLoading = false,
     this.isLoadingMore = false,
     this.error,
-    this.hasMore = true,
-    this.currentPage = 1,
-    this.search = '',
+    this.total = 0,
+    this.hasMore = false,
+    this.page = 1,
+    this.search,
     this.categoryId,
-    this.ordering = '-created_at',
+    this.minPrice,
+    this.maxPrice,
+    this.ordering,
   });
 
   CatalogState copyWith({
     List<Product>? products,
+    List<Category>? categories,
     bool? isLoading,
     bool? isLoadingMore,
     String? error,
+    int? total,
     bool? hasMore,
-    int? currentPage,
+    int? page,
     String? search,
     int? categoryId,
+    double? minPrice,
+    double? maxPrice,
     String? ordering,
   }) =>
       CatalogState(
         products: products ?? this.products,
+        categories: categories ?? this.categories,
         isLoading: isLoading ?? this.isLoading,
         isLoadingMore: isLoadingMore ?? this.isLoadingMore,
         error: error,
+        total: total ?? this.total,
         hasMore: hasMore ?? this.hasMore,
-        currentPage: currentPage ?? this.currentPage,
-        search: search ?? this.search,
-        categoryId: categoryId ?? this.categoryId,
-        ordering: ordering ?? this.ordering,
+        page: page ?? this.page,
+        search: search,
+        categoryId: categoryId,
+        minPrice: minPrice,
+        maxPrice: maxPrice,
+        ordering: ordering,
       );
 }
 
 class CatalogNotifier extends StateNotifier<CatalogState> {
-  final ProductRemoteDatasource _datasource;
+  final ProductRemoteDatasource _productDs;
+  final CategoryRemoteDatasource _categoryDs;
 
-  CatalogNotifier(this._datasource) : super(const CatalogState());
+  CatalogNotifier(this._productDs, this._categoryDs) : super(const CatalogState()) {
+    loadCategories();
+    load();
+  }
 
-  Future<void> loadProducts({bool append = false}) async {
-    final page = append ? state.currentPage + 1 : 1;
+  Future<void> loadCategories() async {
+    try {
+      final cats = await _categoryDs.getCategories();
+      state = state.copyWith(categories: cats);
+    } catch (_) {}
+  }
 
-    if (append) {
-      state = state.copyWith(isLoadingMore: true, error: null);
+  Future<void> load({bool reset = true}) async {
+    final s = state;
+    final page = reset ? 1 : s.page;
+
+    if (reset) {
+      state = s.copyWith(isLoading: true, error: null, page: 1);
     } else {
-      state = state.copyWith(isLoading: true, error: null, currentPage: 1);
+      if (s.isLoadingMore || !s.hasMore) return;
+      state = s.copyWith(isLoadingMore: true);
     }
 
     try {
-      final result = await _datasource.getProducts(
-        search: state.search.isNotEmpty ? state.search : null,
-        category: state.categoryId,
-        ordering: state.ordering,
+      final result = await _productDs.getProducts(
         page: page,
-        pageSize: 12,
+        search: s.search,
+        category: s.categoryId,
+        priceMin: s.minPrice,
+        priceMax: s.maxPrice,
+        ordering: s.ordering,
       );
-
-      final allProducts = append
-          ? [...state.products, ...result.results]
-          : result.results;
-
       state = state.copyWith(
-        products: allProducts,
-        isLoading: false,
-        isLoadingMore: false,
+        products: reset ? result.results : [...state.products, ...result.results],
+        total: result.count,
         hasMore: result.next != null,
-        currentPage: page,
+        isLoading: false,
+        isLoadingMore: false,
+        page: page + 1,
+        error: null,
       );
-    } on Exception catch (e) {
+    } catch (e) {
       state = state.copyWith(
         isLoading: false,
         isLoadingMore: false,
-        error: e.toString(),
+        error: e.toString().replaceAll('Exception: ', ''),
       );
     }
   }
 
-  void searchProducts(String query) {
-    state = state.copyWith(search: query, products: [], currentPage: 1, hasMore: true);
-    loadProducts();
+  void setSearch(String? value) {
+    state = state.copyWith(search: value?.isEmpty == true ? null : value);
+    load();
   }
 
-  void filterByCategory(int? id) {
-    state = state.copyWith(categoryId: id, products: [], currentPage: 1, hasMore: true);
-    loadProducts();
+  void setCategory(int? id) {
+    state = state.copyWith(categoryId: id);
+    load();
   }
 
-  void sortBy(String field) {
-    state = state.copyWith(ordering: field, products: [], currentPage: 1, hasMore: true);
-    loadProducts();
+  void setPriceRange(double? min, double? max) {
+    state = state.copyWith(minPrice: min, maxPrice: max);
+    load();
   }
 
-  void loadMore() {
-    if (!state.isLoadingMore && state.hasMore) {
-      loadProducts(append: true);
-    }
+  void setOrdering(String? value) {
+    state = state.copyWith(ordering: value);
+    load();
   }
+
+  void clearFilters() {
+    state = state.copyWith(
+      search: null,
+      categoryId: null,
+      minPrice: null,
+      maxPrice: null,
+      ordering: null,
+    );
+    load();
+  }
+
+  void loadMore() => load(reset: false);
+  Future<void> refresh() => load();
 }
 
 final catalogProvider = StateNotifierProvider<CatalogNotifier, CatalogState>((ref) {
-  final datasource = ref.watch(productDatasourceProvider);
-  return CatalogNotifier(datasource);
+  return CatalogNotifier(
+    ref.watch(productDatasourceProvider),
+    ref.watch(categoryDatasourceProvider),
+  );
 });
 
-final categoriesProvider = FutureProvider<List<Category>>((ref) async {
-  final repo = ref.watch(categoryRepositoryProvider);
-  return repo.getCategories();
-});
-
-final productDetailProvider = FutureProvider.family<Product, int>((ref, id) async {
-  final datasource = ref.watch(productDatasourceProvider);
-  return datasource.getProduct(id);
+final categoriesProvider = Provider<AsyncValue<List<Category>>>((ref) {
+  final state = ref.watch(catalogProvider);
+  return AsyncValue.data(state.categories);
 });
