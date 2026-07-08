@@ -5,15 +5,9 @@ import '../../domain/model/auth_state.dart';
 import '../providers/auth_provider.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/register_screen.dart';
-
-class _SplashScreen extends StatelessWidget {
-  const _SplashScreen();
-
-  @override
-  Widget build(BuildContext context) => const Scaffold(
-    body: Center(child: CircularProgressIndicator()),
-  );
-}
+import '../screens/catalog/catalog_screen.dart';
+import '../screens/catalog/home_screen.dart';
+import 'public_shell.dart';
 
 class _PlaceholderScreen extends ConsumerWidget {
   final String title;
@@ -42,23 +36,15 @@ class _PlaceholderScreen extends ConsumerWidget {
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
-    initialLocation: '/splash',
+    initialLocation: '/',
     refreshListenable: _AuthStateListenable(ref),
     redirect: (context, state) {
       final authState = ref.read(authProvider);
-      final isChecking = authState.isChecking;
-      final isAuth     = authState.isAuthenticated;
-      final isStaff    = authState.isStaff;
-      final location   = state.matchedLocation;
-
-      if (isChecking) {
-        return location == '/splash' ? null : '/splash';
-      }
+      final isAuth  = authState.isAuthenticated;
+      final isStaff = authState.isStaff;
+      final location = state.matchedLocation;
 
       final isAuthRoute = location == '/login' || location == '/register';
-      final isSplash    = location == '/splash';
-
-      if (isSplash) return isAuth ? (isStaff ? '/admin' : '/') : '/login';
 
       if (!isAuth && !isAuthRoute) return '/login';
 
@@ -69,11 +55,19 @@ final routerProvider = Provider<GoRouter>((ref) {
       return null;
     },
     routes: [
-      GoRoute(
-        path:    '/splash',
-        builder: (_, __) => const _SplashScreen(),
+      ShellRoute(
+        builder: (_, __, child) => PublicShell(child: child),
+        routes: [
+          GoRoute(
+            path:    '/',
+            builder: (_, __) => const HomeScreen(),
+          ),
+          GoRoute(
+            path:    '/catalog',
+            builder: (_, __) => const CatalogScreen(),
+          ),
+        ],
       ),
-
       GoRoute(
         path:    '/login',
         builder: (_, __) => const LoginScreen(),
@@ -82,20 +76,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         path:    '/register',
         builder: (_, __) => const RegisterScreen(),
       ),
-
-      GoRoute(
-        path:    '/',
-        builder: (_, __) => const _PlaceholderScreen('Home — M5'),
-      ),
-      GoRoute(
-        path:    '/catalog',
-        builder: (_, __) => const _PlaceholderScreen('Catálogo — M5'),
-      ),
       GoRoute(
         path:    '/product/:id',
-        builder: (_, __) => const _PlaceholderScreen('Detalle — M5'),
+        builder: (_, __) => const _PlaceholderScreen('Detalle — M6'),
       ),
-
       GoRoute(
         path:    '/orders',
         builder: (_, __) => const _PlaceholderScreen('Mis pedidos — M7'),
@@ -104,7 +88,6 @@ final routerProvider = Provider<GoRouter>((ref) {
         path:    '/profile',
         builder: (_, __) => const _PlaceholderScreen('Perfil — M7'),
       ),
-
       GoRoute(
         path:    '/admin',
         builder: (_, __) => const _PlaceholderScreen('Dashboard — M8'),
