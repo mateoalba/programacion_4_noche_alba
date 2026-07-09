@@ -74,7 +74,7 @@ class _ProductDetailContentState extends ConsumerState<_ProductDetailContent> {
                   color: AppColors.borderLight,
                   child: p.imageUrl != null
                       ? CachedNetworkImage(
-                          imageUrl: p.imageUrl!,
+                          imageUrl: '${AppConfig.baseUrl}${p.imageUrl}',
                           fit: BoxFit.cover,
                           placeholder: (_, __) => Container(
                             color: AppColors.surface2,

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/config/app_config.dart';
 import '../../../theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../data/repository/category_repository_impl.dart';
@@ -234,104 +235,111 @@ class _ProductAdminCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => Opacity(
-    opacity: product.isActive ? 1.0 : 0.55,
-    child:   Container(
-      padding:    const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        color:        AppColors.surface,
-        borderRadius: BorderRadius.circular(14),
-        border:       Border.all(color: AppColors.border),
-      ),
-      child: Row(
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: SizedBox(
-              width: 54, height: 54,
-              child: product.imageUrl != null
-                  ? CachedNetworkImage(
-                      imageUrl: product.imageUrl!,
-                      fit:      BoxFit.cover,
-                      errorWidget: (_, __, ___) => Container(
-                        color: AppColors.surface2,
-                        child: const Center(child: Text('📦')),
-                      ),
-                    )
-                  : Container(
-                      color: AppColors.surface2,
-                      child: const Center(
-                        child: Text('📦', style: TextStyle(fontSize: 22)),
-                      ),
-                    ),
-            ),
-          ),
-          const SizedBox(width: 12),
+  Widget build(BuildContext context) {
+    final imageUrl = product.imageUrl != null
+        ? '${AppConfig.baseUrl}${product.imageUrl}'
+        : null;
 
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  product.name,
-                  style: const TextStyle(
-                    color: AppColors.textPrimary, fontWeight: FontWeight.w600,
-                  ),
-                  maxLines: 1, overflow: TextOverflow.ellipsis,
-                ),
-                if (product.category != null)
-                  Text(product.category!.name,
-                      style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
-                Row(
-                  children: [
-                    Text(
-                      formatPrice(product.price),
-                      style: const TextStyle(
-                        color: AppColors.accent, fontWeight: FontWeight.bold, fontSize: 14,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                      decoration: BoxDecoration(
-                        color:        _stockColor().withValues(alpha: 0.12),
-                        borderRadius: BorderRadius.circular(6),
-                      ),
-                      child: Text(
-                        product.stock == 0 ? 'Agotado' : '${product.stock} uds.',
-                        style: TextStyle(
-                          color:      _stockColor(),
-                          fontSize:   10,
-                          fontWeight: FontWeight.bold,
+    return Opacity(
+      opacity: product.isActive ? 1.0 : 0.55,
+      child: Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: AppColors.border),
+        ),
+        child: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: SizedBox(
+                width: 54, height: 54,
+                child: imageUrl != null
+                    ? CachedNetworkImage(
+                        imageUrl: imageUrl,
+                        fit: BoxFit.cover,
+                        placeholder: (_, __) => Container(
+                          color: AppColors.surface2,
+                        ),
+                        errorWidget: (_, __, ___) => Container(
+                          color: AppColors.surface2,
+                          child: const Center(child: Text('📦')),
+                        ),
+                      )
+                    : Container(
+                        color: AppColors.surface2,
+                        child: const Center(
+                          child: Text('📦', style: TextStyle(fontSize: 22)),
                         ),
                       ),
+              ),
+            ),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                      color: AppColors.textPrimary, fontWeight: FontWeight.w600,
                     ),
+                    maxLines: 1, overflow: TextOverflow.ellipsis,
+                  ),
+                  if (product.category != null)
+                    Text(product.category!.name,
+                        style: const TextStyle(color: AppColors.textSecondary, fontSize: 12)),
+                  Row(
+                    children: [
+                      Text(
+                        formatPrice(product.price),
+                        style: const TextStyle(
+                          color: AppColors.accent, fontWeight: FontWeight.bold, fontSize: 14,
+                        ),
+                      ),
+                      const SizedBox(width: 8),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                        decoration: BoxDecoration(
+                          color:        _stockColor().withValues(alpha: 0.12),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Text(
+                          product.stock == 0 ? 'Agotado' : '${product.stock} uds.',
+                          style: TextStyle(
+                            color:      _stockColor(),
+                            fontSize:   10,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Switch(
+                  value:       product.isActive,
+                  onChanged:   (_) => onToggle(),
+                  activeThumbColor: AppColors.accent,
+                ),
+                Row(
+                  children: [
+                    _ActionIcon(icon: Icons.inventory_2_outlined, color: AppColors.accent,    onTap: onRestock),
+                    _ActionIcon(icon: Icons.edit_outlined,         color: AppColors.textSecondary, onTap: onEdit),
+                    _ActionIcon(icon: Icons.delete_outline,        color: AppColors.error,    onTap: onDelete),
                   ],
                 ),
               ],
             ),
-          ),
-
-          Column(
-            children: [
-              Switch(
-                value:       product.isActive,
-                onChanged:   (_) => onToggle(),
-                activeThumbColor: AppColors.accent,
-              ),
-              Row(
-                children: [
-                  _ActionIcon(icon: Icons.inventory_2_outlined, color: AppColors.accent,    onTap: onRestock),
-                  _ActionIcon(icon: Icons.edit_outlined,         color: AppColors.textSecondary, onTap: onEdit),
-                  _ActionIcon(icon: Icons.delete_outline,        color: AppColors.error,    onTap: onDelete),
-                ],
-              ),
-            ],
-          ),
-        ],
+          ],
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 class _ActionIcon extends StatelessWidget {

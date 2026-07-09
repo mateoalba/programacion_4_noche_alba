@@ -8,6 +8,7 @@ import '../screens/admin/categories_admin_screen.dart';
 import '../screens/admin/products_admin_screen.dart';
 import '../screens/admin/orders_admin_screen.dart';
 import '../screens/admin/order_admin_detail_screen.dart';
+import '../screens/admin/users_admin_screen.dart';
 import '../screens/auth/login_screen.dart';
 import '../screens/auth/profile_screen.dart';
 import '../screens/auth/register_screen.dart';
@@ -19,17 +20,6 @@ import '../screens/orders/order_detail_screen.dart';
 import '../screens/orders/orders_screen.dart';
 import '../widgets/admin_shell.dart';
 import 'public_shell.dart';
-
-class _AdminPlaceholder extends StatelessWidget {
-  final String title;
-  const _AdminPlaceholder(this.title);
-
-  @override
-  Widget build(BuildContext context) => Center(
-        child: Text(title,
-            style: const TextStyle(color: Color(0xFF8888AA), fontSize: 16)),
-      );
-}
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -145,7 +135,7 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (_, state) => AdminShell(
           title:        'Usuarios',
           currentRoute: state.matchedLocation,
-          child:        const _AdminPlaceholder('Usuarios — M11'),
+          child:        const UsersAdminScreen(),
         ),
       ),
     ],
