@@ -1,16 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../theme/app_colors.dart';
 import '../../providers/auth_provider.dart';
+import '../../providers/profile_provider.dart';
+import '../../providers/image_upload_provider.dart';
+import '../../widgets/user_avatar.dart';
 
-class ProfileScreen extends ConsumerWidget {
+class ProfileScreen extends ConsumerStatefulWidget {
   const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends ConsumerState<ProfileScreen> {
+  final _picker = ImagePicker();
+
+  Future<void> _pickAndUploadAvatar() async {
+    final file = await _picker.pickImage(source: ImageSource.gallery);
+    if (file == null) return;
+
+    await ref.read(imageUploadProvider.notifier).upload('/users/profile/', file.path);
+
+    if (!mounted) return;
+
+    final state = ref.read(imageUploadProvider);
+    if (state is ImageUploadSuccess) {
+      ref.invalidate(profileProvider);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('✅ Avatar actualizado'),
+          backgroundColor: AppColors.success,
+        ),
+      );
+    } else if (state is ImageUploadError) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('❌ ${state.message}'),
+          backgroundColor: AppColors.error,
+        ),
+      );
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final user = ref.watch(authProvider).user;
+    final uploadState = ref.watch(imageUploadProvider);
+    final profileAsync = ref.watch(profileProvider);
     final tt = Theme.of(context).textTheme;
+    final avatarUrl = profileAsync.valueOrNull?.avatarUrl;
+    final isUploading = uploadState is ImageUploadLoading;
 
     return Scaffold(
       body: SafeArea(
@@ -19,29 +61,22 @@ class ProfileScreen extends ConsumerWidget {
           child: Column(
             children: [
               const SizedBox(height: 24),
-              Container(
-                width: 80, height: 80,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [AppColors.accent, AppColors.accentLight],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ),
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: Text(
-                    (user?.username.isNotEmpty == true)
-                        ? user!.username[0].toUpperCase()
-                        : '?',
-                    style: const TextStyle(
-                      color: AppColors.onAccent,
-                      fontSize: 34,
-                      fontWeight: FontWeight.bold,
+              UserAvatar(
+                avatarUrl: avatarUrl,
+                username: user?.username ?? '',
+                size: 80,
+                onTap: isUploading ? null : _pickAndUploadAvatar,
+              ),
+              if (isUploading)
+                const Padding(
+                  padding: EdgeInsets.only(top: 8),
+                  child: SizedBox(
+                    width: 16, height: 16,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2, color: AppColors.accent,
                     ),
                   ),
                 ),
-              ),
               const SizedBox(height: 16),
               Text(user?.username ?? '—', style: tt.headlineMedium),
               Text(user?.email ?? '—', style: tt.bodyMedium),

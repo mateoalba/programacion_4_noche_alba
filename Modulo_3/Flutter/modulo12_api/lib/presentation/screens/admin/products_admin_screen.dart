@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../core/config/app_config.dart';
 import '../../../theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
@@ -8,6 +9,7 @@ import '../../../data/repository/category_repository_impl.dart';
 import '../../../domain/model/category.dart';
 import '../../../domain/model/product.dart';
 import '../../providers/products_admin_provider.dart';
+import '../../providers/image_upload_provider.dart';
 import '../../widgets/product_form.dart';
 import '../../widgets/restock_dialog.dart';
 
@@ -20,6 +22,7 @@ class ProductsAdminScreen extends ConsumerStatefulWidget {
 
 class _ProductsAdminScreenState extends ConsumerState<ProductsAdminScreen> {
   List<Category> _categories = [];
+  final _picker = ImagePicker();
 
   @override
   void initState() {
@@ -27,6 +30,20 @@ class _ProductsAdminScreenState extends ConsumerState<ProductsAdminScreen> {
     ref.read(categoryRepositoryProvider).getCategories().then((cats) {
       if (mounted) setState(() => _categories = cats);
     });
+  }
+
+  Future<void> _pickAndUploadImage(int productId) async {
+    final file = await _picker.pickImage(source: ImageSource.gallery);
+    if (file == null) return;
+
+    await ref.read(imageUploadProvider.notifier).upload(
+      '/products/$productId/',
+      file.path,
+    );
+
+    if (mounted) {
+      ref.read(productsAdminProvider.notifier).load();
+    }
   }
 
   @override
@@ -145,18 +162,19 @@ class _ProductsAdminScreenState extends ConsumerState<ProductsAdminScreen> {
               );
             }
 
-            return ListView.separated(
-              padding:         const EdgeInsets.all(16),
-              itemCount:       filtered.length,
-              separatorBuilder:(_, __) => const SizedBox(height: 10),
-              itemBuilder: (_, i) => _ProductAdminCard(
-                product:    filtered[i],
-                onToggle:   () => ref.read(productsAdminProvider.notifier)
-                    .toggleActive(filtered[i].id, !filtered[i].isActive),
-                onEdit:     () => showProductForm(
-                  context, ref, initial: filtered[i], categories: _categories,
-                ),
-                onRestock:  () async {
+              return ListView.separated(
+                padding:         const EdgeInsets.all(16),
+                itemCount:       filtered.length,
+                separatorBuilder:(_, __) => const SizedBox(height: 10),
+                itemBuilder: (_, i) => _ProductAdminCard(
+                  product:    filtered[i],
+                  onToggle:   () => ref.read(productsAdminProvider.notifier)
+                      .toggleActive(filtered[i].id, !filtered[i].isActive),
+                  onUploadImage: () => _pickAndUploadImage(filtered[i].id),
+                  onEdit:     () => showProductForm(
+                    context, ref, initial: filtered[i], categories: _categories,
+                  ),
+                  onRestock:  () async {
                   final qty = await showRestockDialog(context, filtered[i]);
                   if (qty != null && context.mounted) {
                     final newStock = await ref
@@ -216,6 +234,7 @@ class _ProductsAdminScreenState extends ConsumerState<ProductsAdminScreen> {
 class _ProductAdminCard extends StatelessWidget {
   final Product      product;
   final VoidCallback onToggle;
+  final VoidCallback onUploadImage;
   final VoidCallback onEdit;
   final VoidCallback onRestock;
   final VoidCallback onDelete;
@@ -223,6 +242,7 @@ class _ProductAdminCard extends StatelessWidget {
   const _ProductAdminCard({
     required this.product,
     required this.onToggle,
+    required this.onUploadImage,
     required this.onEdit,
     required this.onRestock,
     required this.onDelete,
@@ -236,9 +256,7 @@ class _ProductAdminCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final imageUrl = product.imageUrl != null
-        ? '${AppConfig.baseUrl}${product.imageUrl}'
-        : null;
+    final imageUrl = AppConfig.resolveImageUrl(product.imageUrl);
 
     return Opacity(
       opacity: product.isActive ? 1.0 : 0.55,
@@ -251,28 +269,48 @@ class _ProductAdminCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: SizedBox(
-                width: 54, height: 54,
-                child: imageUrl != null
-                    ? CachedNetworkImage(
-                        imageUrl: imageUrl,
-                        fit: BoxFit.cover,
-                        placeholder: (_, __) => Container(
-                          color: AppColors.surface2,
-                        ),
-                        errorWidget: (_, __, ___) => Container(
-                          color: AppColors.surface2,
-                          child: const Center(child: Text('📦')),
-                        ),
-                      )
-                    : Container(
-                        color: AppColors.surface2,
-                        child: const Center(
-                          child: Text('📦', style: TextStyle(fontSize: 22)),
-                        ),
+            GestureDetector(
+              onTap: onUploadImage,
+              child: Stack(
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: SizedBox(
+                      width: 54, height: 54,
+                      child: imageUrl != null
+                          ? CachedNetworkImage(
+                              imageUrl: imageUrl,
+                              fit: BoxFit.cover,
+                              placeholder: (_, __) => Container(
+                                color: AppColors.surface2,
+                              ),
+                              errorWidget: (_, __, ___) => Container(
+                                color: AppColors.surface2,
+                                child: const Center(child: Text('📦')),
+                              ),
+                            )
+                          : Container(
+                              color: AppColors.surface2,
+                              child: const Center(
+                                child: Text('📦', style: TextStyle(fontSize: 22)),
+                              ),
+                            ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 2, right: 2,
+                    child: Container(
+                      width: 20, height: 20,
+                      decoration: BoxDecoration(
+                        color: AppColors.accent,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: AppColors.surface, width: 1.5),
                       ),
+                      child: const Icon(Icons.camera_alt,
+                          color: AppColors.onAccent, size: 12),
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 12),

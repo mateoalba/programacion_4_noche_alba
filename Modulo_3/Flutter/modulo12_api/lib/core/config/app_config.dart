@@ -7,5 +7,13 @@ class AppConfig {
   static const String appName = 'Flutter Shop App';
   static const double taxRate = 0.15;
 
+  /// If [url] is already absolute (starts with http:// or https://) return it
+  /// as-is; otherwise prepend [baseUrl].
+  static String? resolveImageUrl(String? url) {
+    if (url == null || url.isEmpty) return null;
+    if (url.startsWith('http://') || url.startsWith('https://')) return url;
+    return '$baseUrl$url';
+  }
+
   AppConfig._();
 }

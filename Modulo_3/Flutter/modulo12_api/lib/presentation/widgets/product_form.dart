@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../theme/app_colors.dart';
 import '../../core/utils/validators.dart';
 import '../../domain/model/category.dart';
 import '../../domain/model/product.dart';
 import '../providers/products_admin_provider.dart';
+import '../providers/image_upload_provider.dart';
+import 'product_image.dart';
 
 Future<void> showProductForm(
   BuildContext context,
@@ -41,6 +44,7 @@ class _ProductFormSheetState extends ConsumerState<ProductFormSheet> {
   final _stockCtrl = TextEditingController();
   bool     _isActive   = true;
   int?     _categoryId;
+  final _picker = ImagePicker();
 
   @override
   void initState() {
@@ -63,6 +67,15 @@ class _ProductFormSheetState extends ConsumerState<ProductFormSheet> {
     _priceCtrl.dispose();
     _stockCtrl.dispose();
     super.dispose();
+  }
+
+  Future<void> _pickAndUploadImage(int productId) async {
+    final file = await _picker.pickImage(source: ImageSource.gallery);
+    if (file == null) return;
+    await ref.read(imageUploadProvider.notifier).upload(
+      '/products/$productId/',
+      file.path,
+    );
   }
 
   Future<void> _submit() async {
@@ -239,6 +252,43 @@ class _ProductFormSheetState extends ConsumerState<ProductFormSheet> {
                       ],
                     ),
                   ),
+                  if (isEdit && widget.initial!.imageUrl != null) ...[
+                    const SizedBox(height: 12),
+                    ProductImage(
+                      imageUrl: widget.initial!.imageUrl,
+                      height: 160,
+                      borderRadius: 12,
+                    ),
+                    const SizedBox(height: 8),
+                    SizedBox(
+                      width: double.infinity,
+                      child: OutlinedButton.icon(
+                        onPressed: isSaving ? null : () => _pickAndUploadImage(widget.initial!.id),
+                        icon: Consumer(
+                          builder: (_, wRef, __) {
+                            final upState = wRef.watch(imageUploadProvider);
+                            if (upState is ImageUploadLoading) {
+                              return const SizedBox(
+                                width: 14, height: 14,
+                                child: CircularProgressIndicator(strokeWidth: 2),
+                              );
+                            }
+                            return const Icon(Icons.camera_alt, size: 18);
+                          },
+                        ),
+                        label: Consumer(
+                          builder: (_, wRef, __) {
+                            final upState = wRef.watch(imageUploadProvider);
+                            if (upState is ImageUploadLoading) return const Text('Subiendo...');
+                            if (upState is ImageUploadSuccess) return const Text('✅ Imagen actualizada');
+                            if (upState is ImageUploadError) return const Text('❌ Error, reintentar');
+                            return const Text('Cambiar imagen');
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
+
                   const SizedBox(height: 20),
 
                   Row(

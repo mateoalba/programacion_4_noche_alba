@@ -1,11 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../../theme/app_colors.dart';
 import '../../../core/utils/formatters.dart';
 import '../../../core/config/app_config.dart';
+import '../../providers/auth_provider.dart';
 import '../../providers/catalog_provider.dart';
 import '../../providers/cart_provider.dart';
+import '../../widgets/product_image.dart';
 import '../../../domain/model/product.dart';
 
 class ProductDetailScreen extends ConsumerWidget {
@@ -55,6 +57,7 @@ class _ProductDetailContentState extends ConsumerState<_ProductDetailContent> {
   @override
   Widget build(BuildContext context) {
     final p = widget.product;
+    final auth = ref.watch(authProvider);
     final outOfStock = p.stock == 0;
     final subtotal = p.price * _quantity;
     final taxAmount = subtotal * AppConfig.taxRate;
@@ -62,40 +65,21 @@ class _ProductDetailContentState extends ConsumerState<_ProductDetailContent> {
 
     return Scaffold(
       appBar: AppBar(title: Text(p.name, overflow: TextOverflow.ellipsis)),
+      floatingActionButton: auth.isStaff
+          ? FloatingActionButton(
+              mini: true,
+              backgroundColor: AppColors.accent,
+              onPressed: () => context.go('/admin/products'),
+              child: const Icon(Icons.edit_outlined, color: AppColors.onAccent),
+            )
+          : null,
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Stack(
               children: [
-                Container(
-                  height: 240,
-                  width: double.infinity,
-                  color: AppColors.borderLight,
-                  child: p.imageUrl != null
-                      ? CachedNetworkImage(
-                          imageUrl: '${AppConfig.baseUrl}${p.imageUrl}',
-                          fit: BoxFit.cover,
-                          placeholder: (_, __) => Container(
-                            color: AppColors.surface2,
-                            child: const Center(
-                              child: CircularProgressIndicator(color: AppColors.accent),
-                            ),
-                          ),
-                          errorWidget: (_, __, ___) => Container(
-                            color: AppColors.surface2,
-                            child: const Center(
-                              child: Text('📦', style: TextStyle(fontSize: 72)),
-                            ),
-                          ),
-                        )
-                      : Container(
-                          color: AppColors.surface2,
-                          child: const Center(
-                            child: Text('📦', style: TextStyle(fontSize: 72)),
-                          ),
-                        ),
-                ),
+                ProductImage(imageUrl: p.imageUrl),
                 if (outOfStock)
                   Positioned(
                     bottom: 0,

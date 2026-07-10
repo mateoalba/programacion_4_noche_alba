@@ -30,9 +30,7 @@ class ProductCard extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final tt = Theme.of(context).textTheme;
-    final imageUrl = product.imageUrl != null
-        ? '${AppConfig.baseUrl}${product.imageUrl}'
-        : null;
+    final imageUrl = AppConfig.resolveImageUrl(product.imageUrl);
 
     return Card(
       clipBehavior: Clip.antiAlias,

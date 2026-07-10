@@ -14,9 +14,10 @@ class PublicShell extends ConsumerWidget {
     final location = GoRouterState.of(context).matchedLocation;
 
     final currentIndex = switch (location) {
-      '/'      => 0,
+      '/'        => 0,
       '/catalog' => 1,
-      _        => 0,
+      '/profile' => 2,
+      _          => 0,
     };
 
     return Scaffold(
@@ -27,6 +28,7 @@ class PublicShell extends ConsumerWidget {
           switch (index) {
             case 0: context.go('/');
             case 1: context.go('/catalog');
+            case 2: context.go('/profile');
           }
         },
         items: [
@@ -55,6 +57,11 @@ class PublicShell extends ConsumerWidget {
                   )
                 : const Icon(Icons.shopping_bag),
             label: 'Catálogo',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            activeIcon: Icon(Icons.person),
+            label: 'Perfil',
           ),
         ],
       ),
