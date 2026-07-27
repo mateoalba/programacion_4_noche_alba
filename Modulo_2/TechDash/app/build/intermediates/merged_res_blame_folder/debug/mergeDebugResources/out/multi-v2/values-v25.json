@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.ute.techdash.app-mergeDebugResources-1:/values-v25/values-v25.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\mateo\\.gradle\\caches\\9.4.1\\transforms\\e5fc9895a6146295e0355df2947586f7\\transformed\\appcompat-1.6.1\\res\\values-v25\\values-v25.xml",
+                    "from": {
+                        "startLines": "2,3,4,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,126,209,308",
+                        "endLines": "2,3,5,7",
+                        "endColumns": "70,82,12,12",
+                        "endOffsets": "121,204,303,414"
+                    }
+                }
+            ]
+        }
+    ]
+}

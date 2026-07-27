@@ -1,0 +1,282 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.ute.techdash"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="24"
+8-->INJECTED
+9        android:targetSdkVersion="36" />
+9-->INJECTED
+10
+11    <!-- Permisos normales — se conceden automáticamente -->
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:6:5-67
+12-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:6:22-64
+13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+13-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:7:5-79
+13-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:7:22-76
+14    <uses-permission android:name="android.permission.VIBRATE" />
+14-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:8:5-66
+14-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:8:22-63
+15
+16    <!-- Permisos peligrosos — requieren diálogo en runtime -->
+17    <uses-permission android:name="android.permission.CAMERA" />
+17-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:11:5-65
+17-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:11:22-62
+18    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+18-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:12:5-79
+18-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:12:22-76
+19    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+19-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:13:5-81
+19-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:13:22-78
+20    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+20-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:14:5-71
+20-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:14:22-68
+21
+22    <!-- Android 13+ — acceso granular a medios -->
+23    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+23-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:17:5-76
+23-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:17:22-73
+24    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+24-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:18:5-75
+24-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:18:22-72
+25    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+25-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:19:5-75
+25-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:19:22-72
+26    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+26-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:12:5-79
+26-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:12:22-76
+27    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+27-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:13:5-81
+27-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:13:22-78
+28
+29    <uses-feature
+29-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:26:5-28:35
+30        android:glEsVersion="0x00020000"
+30-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:27:9-41
+31        android:required="true" />
+31-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:28:9-32
+32
+33    <queries>
+33-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:30:5-34:15
+34
+35        <!-- Needs to be explicitly declared on Android R+ -->
+36        <package android:name="com.google.android.apps.maps" />
+36-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:33:9-64
+36-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:33:18-61
+37    </queries>
+38
+39    <permission
+39-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+40        android:name="com.ute.techdash.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+40-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+41        android:protectionLevel="signature" />
+41-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+42
+43    <uses-permission android:name="com.ute.techdash.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" /> <!-- Solo si necesitas ubicación en segundo plano (requiere justificación especial) -->
+43-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+43-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+44    <!-- <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" /> -->
+45    <application
+45-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:26:5-57:19
+46        android:allowBackup="true"
+46-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:27:9-35
+47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+47-->[androidx.core:core:1.16.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\b497d4e7e1a065040247f69403015310\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+48        android:dataExtractionRules="@xml/data_extraction_rules"
+48-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:28:9-65
+49        android:debuggable="true"
+50        android:extractNativeLibs="false"
+50-->INJECTED
+51        android:fullBackupContent="@xml/backup_rules"
+51-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:29:9-54
+52        android:icon="@mipmap/ic_launcher"
+52-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:30:9-43
+53        android:label="@string/app_name"
+53-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:31:9-41
+54        android:roundIcon="@mipmap/ic_launcher_round"
+54-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:32:9-54
+55        android:supportsRtl="true"
+55-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:33:9-35
+56        android:testOnly="true"
+57        android:theme="@style/Theme.TechDash" >
+57-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:34:9-46
+58        <activity
+58-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:35:9-46:20
+59            android:name="com.ute.techdash.MainActivity"
+59-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:36:13-41
+60            android:exported="true"
+60-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:37:13-36
+61            android:label="@string/app_name"
+61-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:38:13-45
+62            android:theme="@style/Theme.TechDash"
+62-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:39:13-50
+63            android:windowSoftInputMode="adjustResize" >
+63-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:40:13-55
+64            <intent-filter>
+64-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:41:13-45:29
+65                <action android:name="android.intent.action.MAIN" />
+65-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:42:17-69
+65-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:42:25-66
+66
+67                <category android:name="android.intent.category.LAUNCHER" />
+67-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:44:17-77
+67-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:44:27-74
+68            </intent-filter>
+69        </activity>
+70        <!-- FileProvider — para compartir URIs de archivos privados -->
+71        <provider
+71-->INJECTED
+72            android:name="androidx.core.content.FileProvider"
+72-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:49:13-62
+73            android:authorities="com.ute.techdash.fileprovider"
+73-->INJECTED
+74            android:exported="false"
+74-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:51:13-37
+75            android:grantUriPermissions="true" >
+75-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:52:13-47
+76            <meta-data
+76-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:53:13-55:54
+77                android:name="android.support.FILE_PROVIDER_PATHS"
+77-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:54:17-67
+78                android:resource="@xml/file_paths" />
+78-->C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\TechDash\app\src\main\AndroidManifest.xml:55:17-51
+79        </provider>
+80
+81        <service
+81-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:24:9-33:19
+82            android:name="androidx.camera.core.impl.MetadataHolderService"
+82-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:25:13-75
+83            android:enabled="false"
+83-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:26:13-36
+84            android:exported="false" >
+84-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:27:13-37
+85            <meta-data
+85-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:30:13-32:89
+86                android:name="androidx.camera.core.impl.MetadataHolderService.DEFAULT_CONFIG_PROVIDER"
+86-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:31:17-103
+87                android:value="androidx.camera.camera2.Camera2Config$DefaultProvider" />
+87-->[androidx.camera:camera-camera2:1.4.1] C:\Users\mateo\.gradle\caches\9.4.1\transforms\48d946d9123f74bc340bab5fcb189ad1\transformed\camera-camera2-1.4.1\AndroidManifest.xml:32:17-86
+88        </service>
+89
+90        <activity
+90-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\019bc0ad6d1e1d4fa9b9f858b737c7f8\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+91            android:name="androidx.compose.ui.tooling.PreviewActivity"
+91-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\019bc0ad6d1e1d4fa9b9f858b737c7f8\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+92            android:exported="true" />
+92-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\019bc0ad6d1e1d4fa9b9f858b737c7f8\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+93        <activity
+93-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\553bd32765838f1add94076e5aeb2ec2\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:23:9-26:79
+94            android:name="androidx.activity.ComponentActivity"
+94-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\553bd32765838f1add94076e5aeb2ec2\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:24:13-63
+95            android:exported="true"
+95-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\553bd32765838f1add94076e5aeb2ec2\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:25:13-36
+96            android:theme="@android:style/Theme.Material.Light.NoActionBar" /> <!-- Needs to be explicitly declared on P+ -->
+96-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\553bd32765838f1add94076e5aeb2ec2\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:26:13-76
+97        <uses-library
+97-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:39:9-41:40
+98            android:name="org.apache.http.legacy"
+98-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:40:13-50
+99            android:required="false" />
+99-->[com.google.android.gms:play-services-maps:19.0.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\eed6d2b4933939bb3e1bb1b1bb3634e5\transformed\play-services-maps-19.0.0\AndroidManifest.xml:41:13-37
+100
+101        <activity
+101-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\1cd2bcaf2a3fc82cff7ef67c7b42cc58\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+102            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+102-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\1cd2bcaf2a3fc82cff7ef67c7b42cc58\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+103            android:exported="false"
+103-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\1cd2bcaf2a3fc82cff7ef67c7b42cc58\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+104            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+104-->[com.google.android.gms:play-services-base:18.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\1cd2bcaf2a3fc82cff7ef67c7b42cc58\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+105
+106        <provider
+106-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+107            android:name="androidx.startup.InitializationProvider"
+107-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+108            android:authorities="com.ute.techdash.androidx-startup"
+108-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+109            android:exported="false" >
+109-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+110            <meta-data
+110-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+111                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+111-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+112                android:value="androidx.startup" />
+112-->[androidx.emoji2:emoji2:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\59ec4d2f52a384bf661f73a95a08aaa9\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+113            <meta-data
+113-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\e60a6a2bf2f5afb086487e45ef412e4a\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+114                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+114-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\e60a6a2bf2f5afb086487e45ef412e4a\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+115                android:value="androidx.startup" />
+115-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\mateo\.gradle\caches\9.4.1\transforms\e60a6a2bf2f5afb086487e45ef412e4a\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+116            <meta-data
+116-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+117                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+117-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+118                android:value="androidx.startup" />
+118-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+119        </provider>
+120
+121        <uses-library
+121-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
+122            android:name="androidx.window.extensions"
+122-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
+123            android:required="false" />
+123-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
+124        <uses-library
+124-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
+125            android:name="androidx.window.sidecar"
+125-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
+126            android:required="false" />
+126-->[androidx.window:window:1.5.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\67093e2d9c5c6fc2b79dc3998248c73e\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
+127
+128        <meta-data
+128-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\4660ee7ceeda95d6ee23719dceedfeee\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:9-122
+129            android:name="com.google.android.gms.version"
+129-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\4660ee7ceeda95d6ee23719dceedfeee\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:20-65
+130            android:value="@integer/google_play_services_version" />
+130-->[com.google.android.gms:play-services-basement:18.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\4660ee7ceeda95d6ee23719dceedfeee\transformed\play-services-basement-18.4.0\AndroidManifest.xml:6:66-119
+131
+132        <receiver
+132-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+133            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+133-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+134            android:directBootAware="false"
+134-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+135            android:enabled="true"
+135-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+136            android:exported="true"
+136-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+137            android:permission="android.permission.DUMP" >
+137-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+138            <intent-filter>
+138-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+139                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+139-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+139-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+140            </intent-filter>
+141            <intent-filter>
+141-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+142                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+142-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+142-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+143            </intent-filter>
+144            <intent-filter>
+144-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+145                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+145-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+145-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+146            </intent-filter>
+147            <intent-filter>
+147-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+148                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+148-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+148-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\mateo\.gradle\caches\9.4.1\transforms\6f017c93a46937b3c3d62a9617ef2586\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+149            </intent-filter>
+150        </receiver>
+151    </application>
+152
+153</manifest>

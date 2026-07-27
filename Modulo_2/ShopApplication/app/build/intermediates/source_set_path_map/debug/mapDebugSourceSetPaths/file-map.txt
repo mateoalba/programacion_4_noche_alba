@@ -1,0 +1,65 @@
+com.shopapp-pngs-0 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\build\generated\res\pngs\debug
+com.shopapp-resValues-1 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\build\generated\res\resValues\debug
+com.shopapp-packageDebugResources-2 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.shopapp-packageDebugResources-3 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.shopapp-debug-4 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.shopapp-debug-5 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\src\debug\res
+com.shopapp-main-6 C:\Desarrollo de Software\CUARTO SEMESTRE\Programacion IV\programacion_4_noche_alba\Modulo_2\ShopApplication\app\src\main\res
+com.shopapp-lifecycle-viewmodel-savedstate-2.8.6-7 C:\Users\mateo\.gradle\caches\8.13\transforms\018d26ef7a477b929fba1ed72d44ca3e\transformed\lifecycle-viewmodel-savedstate-2.8.6\res
+com.shopapp-hilt-navigation-1.2.0-8 C:\Users\mateo\.gradle\caches\8.13\transforms\0384ebbf5b71795cadda7e224227ad78\transformed\hilt-navigation-1.2.0\res
+com.shopapp-core-1.13.1-9 C:\Users\mateo\.gradle\caches\8.13\transforms\0498a25802b03a99e40ba76808fbe04b\transformed\core-1.13.1\res
+com.shopapp-material-release-10 C:\Users\mateo\.gradle\caches\8.13\transforms\0a8366bb79dff2ee6af9b078e7332e85\transformed\material-release\res
+com.shopapp-ui-graphics-release-11 C:\Users\mateo\.gradle\caches\8.13\transforms\0be435fa30d0078148dcfdb628ef2f2d\transformed\ui-graphics-release\res
+com.shopapp-activity-1.9.3-12 C:\Users\mateo\.gradle\caches\8.13\transforms\0d9f58ed9342a7e345fc974156333380\transformed\activity-1.9.3\res
+com.shopapp-lifecycle-runtime-release-13 C:\Users\mateo\.gradle\caches\8.13\transforms\14067458fc9816d8d24a450f9f22a6dc\transformed\lifecycle-runtime-release\res
+com.shopapp-runtime-saveable-release-14 C:\Users\mateo\.gradle\caches\8.13\transforms\14688ad40b38e2563f559fce5b27d4ed\transformed\runtime-saveable-release\res
+com.shopapp-navigation-common-2.8.3-15 C:\Users\mateo\.gradle\caches\8.13\transforms\203da5c6b092464c9ab78b57f9ce80ea\transformed\navigation-common-2.8.3\res
+com.shopapp-lifecycle-viewmodel-ktx-2.8.6-16 C:\Users\mateo\.gradle\caches\8.13\transforms\25603843ff6d49aa6cd7a2fe23518697\transformed\lifecycle-viewmodel-ktx-2.8.6\res
+com.shopapp-lifecycle-viewmodel-release-17 C:\Users\mateo\.gradle\caches\8.13\transforms\259f5a7f42fbcf8e5a36f56c858b53e8\transformed\lifecycle-viewmodel-release\res
+com.shopapp-ui-release-18 C:\Users\mateo\.gradle\caches\8.13\transforms\2eb3fdb10227ed1b8367d7acfc0fc8b7\transformed\ui-release\res
+com.shopapp-material-icons-extended-release-19 C:\Users\mateo\.gradle\caches\8.13\transforms\327a2cf42711d8e50905ef1abe69ddef\transformed\material-icons-extended-release\res
+com.shopapp-customview-poolingcontainer-1.0.0-20 C:\Users\mateo\.gradle\caches\8.13\transforms\3c2211e2124c0ddcd07059d2ecedb134\transformed\customview-poolingcontainer-1.0.0\res
+com.shopapp-lifecycle-livedata-core-2.8.6-21 C:\Users\mateo\.gradle\caches\8.13\transforms\3c2d98e0889898b85bea76d639a1d8fc\transformed\lifecycle-livedata-core-2.8.6\res
+com.shopapp-fragment-1.5.1-22 C:\Users\mateo\.gradle\caches\8.13\transforms\441ef751e52f33f80892edd6c09911da\transformed\fragment-1.5.1\res
+com.shopapp-animation-release-23 C:\Users\mateo\.gradle\caches\8.13\transforms\4490938f777c3646912bccab986028f9\transformed\animation-release\res
+com.shopapp-lifecycle-livedata-2.8.6-24 C:\Users\mateo\.gradle\caches\8.13\transforms\4aab00bf91f1ffa05b0f9e39283b2907\transformed\lifecycle-livedata-2.8.6\res
+com.shopapp-lifecycle-livedata-core-ktx-2.8.6-25 C:\Users\mateo\.gradle\caches\8.13\transforms\5035df301b2584b816b2c2d22dba8cb6\transformed\lifecycle-livedata-core-ktx-2.8.6\res
+com.shopapp-ui-tooling-release-26 C:\Users\mateo\.gradle\caches\8.13\transforms\5171deb8d1ba4696e40a4b830facf2a7\transformed\ui-tooling-release\res
+com.shopapp-activity-compose-1.9.3-27 C:\Users\mateo\.gradle\caches\8.13\transforms\51e334737934bc262f715a374ff277e1\transformed\activity-compose-1.9.3\res
+com.shopapp-animation-core-release-28 C:\Users\mateo\.gradle\caches\8.13\transforms\53da77490d85133cc3cda090d6ba4553\transformed\animation-core-release\res
+com.shopapp-navigation-compose-2.8.3-29 C:\Users\mateo\.gradle\caches\8.13\transforms\56a190a2f0d934e3501b2404edc6e880\transformed\navigation-compose-2.8.3\res
+com.shopapp-core-runtime-2.2.0-30 C:\Users\mateo\.gradle\caches\8.13\transforms\5a6a0b2111cbac235c025012a661b574\transformed\core-runtime-2.2.0\res
+com.shopapp-startup-runtime-1.1.1-31 C:\Users\mateo\.gradle\caches\8.13\transforms\60eeb3a3c5a904ffec6bb31e18a722db\transformed\startup-runtime-1.1.1\res
+com.shopapp-graphics-path-1.0.1-32 C:\Users\mateo\.gradle\caches\8.13\transforms\61d95d8164ea55eb0a2c718dbabb8fd7\transformed\graphics-path-1.0.1\res
+com.shopapp-ui-tooling-data-release-33 C:\Users\mateo\.gradle\caches\8.13\transforms\638bdbd0c945d29b6ad5a1bc8379bd8e\transformed\ui-tooling-data-release\res
+com.shopapp-profileinstaller-1.3.1-34 C:\Users\mateo\.gradle\caches\8.13\transforms\6c2c129004e0e31af57768e8024041a4\transformed\profileinstaller-1.3.1\res
+com.shopapp-navigation-runtime-2.8.3-35 C:\Users\mateo\.gradle\caches\8.13\transforms\6fdccc28a5ea21d29a4a70bd2b1ebb41\transformed\navigation-runtime-2.8.3\res
+com.shopapp-activity-ktx-1.9.3-36 C:\Users\mateo\.gradle\caches\8.13\transforms\72139625e28810a2692dcad1409a4754\transformed\activity-ktx-1.9.3\res
+com.shopapp-datastore-release-37 C:\Users\mateo\.gradle\caches\8.13\transforms\73d26e53526df516ffcb5668ce12386c\transformed\datastore-release\res
+com.shopapp-lifecycle-viewmodel-compose-release-38 C:\Users\mateo\.gradle\caches\8.13\transforms\756224aad038e067b4a4cf1e78895146\transformed\lifecycle-viewmodel-compose-release\res
+com.shopapp-foundation-layout-release-39 C:\Users\mateo\.gradle\caches\8.13\transforms\7bbaa825876a16a96246959345f41fef\transformed\foundation-layout-release\res
+com.shopapp-material-icons-core-release-40 C:\Users\mateo\.gradle\caches\8.13\transforms\800492398d674aaaa06ca0aef66046fc\transformed\material-icons-core-release\res
+com.shopapp-appcompat-resources-1.6.1-41 C:\Users\mateo\.gradle\caches\8.13\transforms\80f9e9acbd1088fbd5f380d84b4e2abe\transformed\appcompat-resources-1.6.1\res
+com.shopapp-datastore-core-release-42 C:\Users\mateo\.gradle\caches\8.13\transforms\824518d205150ff186820a2849b64818\transformed\datastore-core-release\res
+com.shopapp-coil-base-2.7.0-43 C:\Users\mateo\.gradle\caches\8.13\transforms\88bf714aa4e8370acde744394d0705a6\transformed\coil-base-2.7.0\res
+com.shopapp-core-ktx-1.13.1-44 C:\Users\mateo\.gradle\caches\8.13\transforms\8b9909c857f762533c812a343a447ac2\transformed\core-ktx-1.13.1\res
+com.shopapp-lifecycle-runtime-ktx-release-45 C:\Users\mateo\.gradle\caches\8.13\transforms\98ec39d6fd8895b02a0eea6088313fd1\transformed\lifecycle-runtime-ktx-release\res
+com.shopapp-material-ripple-release-46 C:\Users\mateo\.gradle\caches\8.13\transforms\9b687e37e41f129e3c949bd3dbe1e0e9\transformed\material-ripple-release\res
+com.shopapp-lifecycle-runtime-compose-release-47 C:\Users\mateo\.gradle\caches\8.13\transforms\9f472713d9ad726a0c06b91a97be88c2\transformed\lifecycle-runtime-compose-release\res
+com.shopapp-savedstate-1.2.1-48 C:\Users\mateo\.gradle\caches\8.13\transforms\a45f63cf48d4483b70228ebf4d70b041\transformed\savedstate-1.2.1\res
+com.shopapp-savedstate-ktx-1.2.1-49 C:\Users\mateo\.gradle\caches\8.13\transforms\a733f377f7a9255f637a165938efea42\transformed\savedstate-ktx-1.2.1\res
+com.shopapp-foundation-release-50 C:\Users\mateo\.gradle\caches\8.13\transforms\b137c9ed797a407a904e13cb8170b1ee\transformed\foundation-release\res
+com.shopapp-lifecycle-process-2.8.6-51 C:\Users\mateo\.gradle\caches\8.13\transforms\b498aaecb041035b0f1d87b3758db035\transformed\lifecycle-process-2.8.6\res
+com.shopapp-runtime-release-52 C:\Users\mateo\.gradle\caches\8.13\transforms\b9f765093da9dc2210e07bae5f992478\transformed\runtime-release\res
+com.shopapp-navigation-runtime-ktx-2.8.3-53 C:\Users\mateo\.gradle\caches\8.13\transforms\c4ee3f0154840889874ace29898f7373\transformed\navigation-runtime-ktx-2.8.3\res
+com.shopapp-navigation-common-ktx-2.8.3-54 C:\Users\mateo\.gradle\caches\8.13\transforms\c51284835eae98e63bc925c014a612a9\transformed\navigation-common-ktx-2.8.3\res
+com.shopapp-ui-geometry-release-55 C:\Users\mateo\.gradle\caches\8.13\transforms\c5f34f11c26a0d6e0d954a3106a2cbc2\transformed\ui-geometry-release\res
+com.shopapp-emoji2-1.3.0-56 C:\Users\mateo\.gradle\caches\8.13\transforms\c7b160478aa4867294bbbbc423a5f569\transformed\emoji2-1.3.0\res
+com.shopapp-datastore-preferences-release-57 C:\Users\mateo\.gradle\caches\8.13\transforms\cada5988901b867d1a41a7fe509be33b\transformed\datastore-preferences-release\res
+com.shopapp-ui-tooling-preview-release-58 C:\Users\mateo\.gradle\caches\8.13\transforms\d06bed68c87d77f6090bdb64e9a100cc\transformed\ui-tooling-preview-release\res
+com.shopapp-ui-unit-release-59 C:\Users\mateo\.gradle\caches\8.13\transforms\dcf330960a544381dd73d7d8c59bd46f\transformed\ui-unit-release\res
+com.shopapp-annotation-experimental-1.4.1-60 C:\Users\mateo\.gradle\caches\8.13\transforms\dfa3c554e463fbd391aaaec060aee672\transformed\annotation-experimental-1.4.1\res
+com.shopapp-ui-util-release-61 C:\Users\mateo\.gradle\caches\8.13\transforms\e2b567ae5e4c6531a570095af0eae423\transformed\ui-util-release\res
+com.shopapp-material3-release-62 C:\Users\mateo\.gradle\caches\8.13\transforms\ebaf53ff856d9e057dd46a5e52df841e\transformed\material3-release\res
+com.shopapp-hilt-navigation-compose-1.2.0-63 C:\Users\mateo\.gradle\caches\8.13\transforms\f7b893ef92bc8a3187e34f43bfd422f4\transformed\hilt-navigation-compose-1.2.0\res
+com.shopapp-ui-text-release-64 C:\Users\mateo\.gradle\caches\8.13\transforms\fb2054150fa1353cf2b1e9748a5d4f95\transformed\ui-text-release\res

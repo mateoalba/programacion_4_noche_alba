@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.ute.techdash.app-mergeDebugResources-1:/values-watch-v21/values-watch-v21.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\mateo\\.gradle\\caches\\9.4.1\\transforms\\e5fc9895a6146295e0355df2947586f7\\transformed\\appcompat-1.6.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "from": {
+                        "startLines": "2,6,10",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,271,499",
+                        "endLines": "5,9,13",
+                        "endColumns": "12,12,12",
+                        "endOffsets": "266,494,724"
+                    }
+                }
+            ]
+        }
+    ]
+}
